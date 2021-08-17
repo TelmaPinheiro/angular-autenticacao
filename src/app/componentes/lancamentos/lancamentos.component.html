@@ -1,31 +1,30 @@
-<div class="p-3 mb-2 bg-dark text-white container-fluid">
-    <table class="table bg-dark text-white">
+    <div class="p-3 mb-2 container-fluid">
+    <p>Data e Hora: {{ dataHoraAtual }}  </p>
+    <p><button  type="button" class="btn btn-primary" (click)="atualizarDataHora()">Atualizar data</button></p>
+    <p>Data em tempo real: {{ dataTempoReal }}</p>
+    <table class="table">
         <thead>
-          <tr>
+          <tr align="center">
             <th scope="col">ID</th>
-            <th scope="col">Data e Hora</th>
+            <th scope="col">Data</th>
+            <th scope="col">Hora</th>
             <th scope="col">Tipo</th>
             <th scope="col">Localização</th>
           </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let lancamento of lancamentos">
-                <th scope="row" >{{lancamento.id}}</th>
-                <td>{{lancamento.data | data | date:"dd/MM/yyyy"}}</td> 
-                <td>{{lancamento.data | hora}}</td>
-                <td>{{lancamento.tipo | tipo}}</td>
-                <td>
-                    <a [href]="urlLocalizacao(lancamento.localizacao)"
-                    target="_blank">
-                      {{lancamento.localizacao}}
-                    </a>
-                   </td>
-              </tr>
+          <tr *ngFor="let lancamento of lancamentos" align="center">
+            <th scope="row" >{{lancamento.id}}</th>
+            <td>{{lancamento.data | data | date:'dd/MM/yyyy' }}</td>
+            <td>{{lancamento.data | hora}}</td>
+            <td>{{lancamento.tipo | tipo}}</td>
+            <td>
                 <a [href]="urlLocalizacao(lancamento.localizacao)"
                 target="_blank">
                   {{lancamento.localizacao}}
                 </a>
-               </td>
+            </td>
+          </tr>
         </tbody>
     </table>
-    </div>
+  </div>
