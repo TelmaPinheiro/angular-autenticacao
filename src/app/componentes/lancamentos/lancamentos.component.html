@@ -1,31 +1,40 @@
-<div class="p-3 mb-2 bg-dark text-white container-fluid">
-    <table class="table bg-dark text-white">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Data e Hora</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Localização</th>
-          </tr>
-        </thead>
-        <tbody>
+[15:21, 18/08/2021] Rita Treinamento: <div class="p-3 mb-2  text-dark container-fluid">
+    <p> Data e Hora: {{dataHoraAtual}} </p>
+    <p><button (click)="atualizarDataHora()">Atualizar data</button> </p>
+    <p>Data em tempo real: {{dataTempoReal}}</p>
+    <p>
+      <a (click)="downloadCSV()">
+        <i class="bi-file-earmark-excel"></i>
+      </a>
+    </p>
+    <p>
+      <a (click)="downloadPDF()">
+        <i class="bi-file-earmark-pdf"></i>
+      </a>
+    </p>
+      <table class="table  text-dark">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Data</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Localização</th>
+            </tr>
+          </thead>
+          <tbody>
             <tr *ngFor="let lancamento of lancamentos">
-                <th scope="row" >{{lancamento.id}}</th>
-                <td>{{lancamento.data | data | date:"dd/MM/yyyy"}}</td> 
-                <td>{{lancamento.data | hora}}</td>
-                <td>{{lancamento.tipo | tipo}}</td>
-                <td>
-                    <a [href]="urlLocalizacao(lancamento.localizacao)"
-                    target="_blank">
-                      {{lancamento.localizacao}}
-                    </a>
-                   </td>
-              </tr>
-                <a [href]="urlLocalizacao(lancamento.localizacao)"
-                target="_blank">
-                  {{lancamento.localizacao}}
-                </a>
-               </td>
-        </tbody>
-    </table>
-    </div>
+              <th scope="row" >{{lancamento.id}}</th>
+              <td>{{lancamento.data | data | date:"dd/MM/yyyy"}}</td> 
+              <td>{{lancamento.data | hora}}</td>
+              <td>{{lancamento.tipo | tipo}}</td>
+              <td>
+                  <a [href]="urlLocalizacao(lancamento.localizacao)"
+                  target="_blank">
+                    {{lancamento.localizacao}}
+                  </a>
+                 </td>
+            </tr>
+          </tbody>
+      </table>
+      </div>
